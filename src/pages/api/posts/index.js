@@ -23,10 +23,14 @@ export default async function handler(req, res) {
   }
 
   // 3) Extract fields
-  const { title, description, image, category } = req.body;
+  const { title, description, image, category, price } = req.body;
 
-  if (!title || !description || !category) {
+  if (!title || !description || !category || price === undefined || price === null) {
     return res.status(400).json({ message: "Missing required fields" });
+  }
+  const parsedPrice = Number(price);
+  if (Number.isNaN(parsedPrice)) {
+    return res.status(400).json({ message: "Price must be a number" });
   }
 
   try {
@@ -41,6 +45,7 @@ export default async function handler(req, res) {
         description: { "en-US": description },
         author: { "en-US": user.email },
         category: { "en-US": category },
+        price: { "en-US": parsedPrice },
 
         // Store image URL directly
         image: image

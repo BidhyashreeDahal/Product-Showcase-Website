@@ -11,12 +11,31 @@ export async function getStaticProps() {
 export default function ProductsPage({ products }) {
   const pageSize = 6;
   const [page, setPage] = React.useState(1);
+  const [categoryFilter, setCategoryFilter] = React.useState("all");
+  const [query, setQuery] = React.useState("");
+
+  const categories = React.useMemo(() => {
+    const values = products
+      .map((product) => product.category)
+      .filter((value) => value && value.trim().length > 0);
+    return ["all", ...Array.from(new Set(values))];
+  }, [products]);
+
+  const filtered = products.filter((product) => {
+    const matchesCategory =
+      categoryFilter === "all" || product.category === categoryFilter;
+    const matchesQuery =
+      !query ||
+      product.title.toLowerCase().includes(query.toLowerCase()) ||
+      product.description.toLowerCase().includes(query.toLowerCase());
+    return matchesCategory && matchesQuery;
+  });
 
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
-  const paginated = products.slice(start, end);
+  const paginated = filtered.slice(start, end);
 
-  const totalPages = Math.ceil(products.length / pageSize);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
 
   return (
     <div className="bg-[#f7f2ea] coffee-pattern">
@@ -32,7 +51,7 @@ export default function ProductsPage({ products }) {
           feel intentional on your counter.
         </p>
 
-        <div className="mt-6 flex items-center gap-3 text-sm text-[#7a5d4a]">
+        <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-[#7a5d4a]">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#f3e7da] px-3 py-1">
             <BeanIcon className="h-3.5 w-3.5" />
             Beans
@@ -45,6 +64,42 @@ export default function ProductsPage({ products }) {
             <BeanIcon className="h-3.5 w-3.5" />
             Ceramics
           </span>
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="min-w-[180px]">
+            <label className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+              Category
+            </label>
+            <select
+              value={categoryFilter}
+              onChange={(event) => {
+                setCategoryFilter(event.target.value);
+                setPage(1);
+              }}
+              className="mt-2 w-full rounded-xl border border-[#eadfce] bg-white px-3 py-2 text-sm text-[#2f241f]"
+            >
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category === "all" ? "All categories" : category}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex-1 min-w-[220px]">
+            <label className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+              Search
+            </label>
+            <input
+              value={query}
+              onChange={(event) => {
+                setQuery(event.target.value);
+                setPage(1);
+              }}
+              placeholder="Search by product name"
+              className="mt-2 w-full rounded-xl border border-[#eadfce] bg-white px-3 py-2 text-sm text-[#2f241f]"
+            />
+          </div>
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -76,10 +131,19 @@ export default function ProductsPage({ products }) {
         </div>
 
         <div className="mt-8">
-          <ProductList products={paginated} />
+          {filtered.length === 0 ? (
+            <div className="rounded-2xl border border-[#eadfce] bg-white p-6 text-sm text-[#6b5446]">
+              No products match your filters. Try a different category or search.
+            </div>
+          ) : (
+            <ProductList products={paginated} />
+          )}
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-[#6b5446]">
+          <span>
+            Showing {filtered.length} item{filtered.length === 1 ? "" : "s"}
+          </span>
           <button
             className="rounded-full border border-[#eadfce] bg-white px-4 py-2 font-semibold text-[#2f241f] disabled:opacity-40"
             disabled={page === 1}

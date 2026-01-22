@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCoffeeImage } from "../lib/coffee-images";
+import { formatPrice } from "../lib/formatting";
 
 export default function ProductList({ products }) {
   return (
@@ -15,8 +16,17 @@ export default function ProductList({ products }) {
             className="h-44 w-full object-cover"
           />
           <div className="flex-1 p-5">
-            <h2 className="text-lg font-semibold text-[#2f241f]">{product.title}</h2>
-            <p className="mt-1 text-sm text-[#6b5446]">By: {product.author}</p>
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="text-lg font-semibold text-[#2f241f]">{product.title}</h2>
+              <span className="text-sm font-semibold text-[#7a5d4a]">
+                {formatPrice(product.price)}
+              </span>
+            </div>
+            {product.category && (
+              <span className="mt-2 inline-flex rounded-full bg-[#f3e7da] px-3 py-1 text-xs font-semibold text-[#7a5d4a]">
+                {product.category}
+              </span>
+            )}
           </div>
           <div className="px-5 pb-5">
             <Link

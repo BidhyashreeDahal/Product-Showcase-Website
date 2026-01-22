@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getCoffeeImage } from "../../lib/coffee-images";
+import { formatPrice } from "../../lib/formatting";
 
 export async function getStaticPaths() {
   const products = await getProducts();
@@ -91,9 +92,12 @@ export default function ProductDetail({ product }) {
             <h1 className="mt-3 text-3xl font-semibold text-[#2f241f]">
               {product.title}
             </h1>
-            <p className="mt-2 text-sm font-semibold text-[#6b5446]">
-              Author: {product.author}
-            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-sm font-semibold text-[#6b5446]">
+              <span className="rounded-full bg-[#f3e7da] px-3 py-1 text-[#7a5d4a]">
+                {product.category || "Coffee gear"}
+              </span>
+              <span className="text-[#7a5d4a]">{formatPrice(product.price)}</span>
+            </div>
             <p className="mt-4 text-sm text-[#6b5446]">{product.description}</p>
 
             {user && (

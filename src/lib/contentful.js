@@ -19,6 +19,20 @@ function formatProduct(entry) {
   if (!entry) return null;
 
   const imageField = entry.fields.image;
+  const rawPrice = entry.fields.price;
+  const parsedPrice =
+    typeof rawPrice === "number"
+      ? rawPrice
+      : rawPrice
+        ? Number(rawPrice)
+        : null;
+
+  let image = null;
+  if (typeof imageField === "string") {
+    image = imageField;
+  } else if (imageField && imageField.fields && imageField.fields.file) {
+    image = "https:" + imageField.fields.file.url;
+  }
 
   return {
     id: entry.sys.id,
@@ -26,9 +40,9 @@ function formatProduct(entry) {
     title: entry.fields.title || "",
     description: entry.fields.description || "",
     author: entry.fields.author || "",
-    image: imageField && imageField.fields && imageField.fields.file
-      ? "https:" + imageField.fields.file.url
-      : null,  // <-- SAFE FALLBACK FOR NO IMAGE
+    category: entry.fields.category || "",
+    price: Number.isFinite(parsedPrice) ? parsedPrice : null,
+    image,
   };
 }
 
@@ -68,6 +82,14 @@ export async function updateProduct(id, data) {
   entry.fields.title["en-US"] = data.title;
   entry.fields.description["en-US"] = data.description;
   entry.fields.author["en-US"] = data.author;
+  if (data.category !== undefined) {
+    entry.fields.category = entry.fields.category || {};
+    entry.fields.category["en-US"] = data.category;
+  }
+  if (data.price !== undefined) {
+    entry.fields.price = entry.fields.price || {};
+    entry.fields.price["en-US"] = data.price;
+  }
 
   // ⭐ Update entry (Contentful manages version automatically)
   const updatedEntry = await entry.update();
@@ -102,6 +124,8 @@ export async function deleteProduct(id) {
       title: { "en-US": data.title },
       description: { "en-US": data.description },
       author: { "en-US": data.author },
+      category: { "en-US": data.category },
+      price: { "en-US": data.price },
       image: { "en-US": data.image || null },
     },
   });

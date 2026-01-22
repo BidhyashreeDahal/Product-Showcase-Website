@@ -11,6 +11,8 @@ export default function EditProductPage() {
   const [product, setProduct] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
   const [version, setVersion] = useState(null);
   const [error, setError] = useState("");
 
@@ -29,6 +31,12 @@ export default function EditProductPage() {
           setProduct(data.product);
           setTitle(data.product.title);
           setDescription(data.product.description);
+          setCategory(data.product.category || "");
+          setPrice(
+            data.product.price === null || data.product.price === undefined
+              ? ""
+              : String(data.product.price)
+          );
           setVersion(data.product.version);
         }
       } catch (err) {
@@ -51,6 +59,8 @@ export default function EditProductPage() {
       id,
       title,
       description,
+      category,
+      price,
     }),
   });
 
@@ -106,6 +116,27 @@ export default function EditProductPage() {
                 rows={5}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">Category</label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">Price</label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                type="number"
+                step="0.01"
+                min="0"
               />
             </div>
 

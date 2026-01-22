@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { formatPrice } from "../../lib/formatting";
 
 export default function Dashboard() {
   const [products, setProducts] = useState([]);
@@ -86,6 +87,14 @@ export default function Dashboard() {
                     <p className="mt-1 text-sm text-[#6b5446]">
                       {p.description?.substring(0, 80)}...
                     </p>
+                    <div className="mt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#7a5d4a]">
+                      {p.category && (
+                        <span className="rounded-full bg-[#f3e7da] px-3 py-1">
+                          {p.category}
+                        </span>
+                      )}
+                      <span>{formatPrice(p.price)}</span>
+                    </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     <Link

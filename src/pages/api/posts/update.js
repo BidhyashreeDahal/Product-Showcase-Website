@@ -9,10 +9,14 @@ export default async function handler(req, res) {
   const user = getUserFromRequest(req);
   if (!user) return res.status(401).json({ message: "Not authenticated" });
 
-  const { id, title, description } = req.body;
+  const { id, title, description, category, price } = req.body;
 
-  if (!id || !title || !description) {
+  if (!id || !title || !description || !category || price === undefined || price === null) {
     return res.status(400).json({ message: "Missing fields" });
+  }
+  const parsedPrice = Number(price);
+  if (Number.isNaN(parsedPrice)) {
+    return res.status(400).json({ message: "Price must be a number" });
   }
 
   // Load the product to check ownership
@@ -34,6 +38,8 @@ export default async function handler(req, res) {
       title,
       description,
       author: existing.author, // keep original author
+      category,
+      price: parsedPrice,
     });
 
     return res.status(200).json({ product: updated });

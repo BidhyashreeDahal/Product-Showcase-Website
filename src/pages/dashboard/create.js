@@ -7,6 +7,7 @@ export default function CreateProduct() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");   // ← NEW
+  const [price, setPrice] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [error, setError] = useState("");
 
@@ -21,6 +22,7 @@ export default function CreateProduct() {
         title,
         description,
         category,     // ← NEW REQUIRED FIELD
+        price,
         image: imageUrl
       }),
     });
@@ -75,6 +77,21 @@ export default function CreateProduct() {
                 className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                required
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">
+                Price (required)
+              </label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                type="number"
+                step="0.01"
+                min="0"
                 required
               />
             </div>
