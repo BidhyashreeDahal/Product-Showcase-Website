@@ -51,6 +51,7 @@ export default function Navbar() {
           <Link href="/products" className="hover:text-white">Shop</Link>
           <Link href="/about" className="hover:text-white">About</Link>
           <Link href="/faq" className="hover:text-white">FAQ</Link>
+          <Link href="/contact" className="hover:text-white">Contact</Link>
           {user && (user.role === "admin" || user.role === "author") && (
             <Link href="/dashboard" className="hover:text-white">Dashboard</Link>
           )}

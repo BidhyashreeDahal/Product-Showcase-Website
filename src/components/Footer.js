@@ -40,6 +40,7 @@ export default function Footer() {
             <Link href="/shipping" className="block hover:text-white">Shipping & Returns</Link>
             <Link href="/care-guide" className="block hover:text-white">Care Guide</Link>
             <Link href="/faq" className="block hover:text-white">FAQ</Link>
+            <Link href="/contact" className="block hover:text-white">Contact</Link>
           </div>
         </div>
       </div>

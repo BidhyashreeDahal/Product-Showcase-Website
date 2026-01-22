@@ -65,8 +65,8 @@ export default function Home() {
         <div className="rounded-3xl border border-[#eadfce] bg-white p-4 shadow-[0_24px_60px_rgba(94,63,45,0.12)]">
           <img
             className="h-64 w-full rounded-2xl object-cover"
-            src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?auto=format&fit=crop&w=1200&q=60"
-            alt="Coffee bar setup"
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=60"
+            alt="Gooseneck kettle"
           />
           <div className="mt-4 rounded-2xl bg-[#fdf8f2] p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9b7a63]">
@@ -76,7 +76,7 @@ export default function Home() {
               Linea Gooseneck Kettle
             </h2>
             <p className="mt-2 text-sm text-[#6b5446]">
-              Balanced pour control with a warm matte finish and fast heat-up.
+              Precision pour control with a warm matte finish and steady heat retention.
             </p>
           </div>
         </div>
