@@ -82,9 +82,12 @@ export default function CartPage() {
               <p className="mt-2 text-xs text-[#7a5d4a]">
                 Taxes and shipping calculated at checkout.
               </p>
-              <button className="mt-4 w-full rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]">
+              <Link
+                href="/checkout"
+                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]"
+              >
                 Checkout
-              </button>
+              </Link>
               <button
                 className="mt-2 w-full rounded-full border border-[#eadfce] px-4 py-2 text-sm font-semibold text-[#2f241f] hover:bg-[#f1e4d6]"
                 onClick={clearCart}

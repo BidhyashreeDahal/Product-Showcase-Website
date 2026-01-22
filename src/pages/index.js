@@ -113,6 +113,29 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-20">
+        <div className="grid items-center gap-8 rounded-3xl border border-[#eadfce] bg-white p-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
+              Brand Story
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#2f241f]">
+              Brewline is a small-batch studio for calm morning rituals.
+            </h2>
+            <p className="mt-4 text-sm text-[#6b5446]">
+              We build a tight lineup of coffee bar essentials that feel warm,
+              durable, and intentional. Each piece is designed to look great on
+              your counter and work reliably every day.
+            </p>
+          </div>
+          <img
+            className="h-64 w-full rounded-2xl object-cover"
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=60"
+            alt="Coffee bar workspace"
+          />
+        </div>
+      </section>
     </div>
   );
 }
