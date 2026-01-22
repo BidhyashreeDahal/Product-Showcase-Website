@@ -27,7 +27,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-[#4b372d] py-4 text-center text-xs text-[#eadfce]">
-        © 2025 Brewline Supply — INFT3102 Assignment 2
+        © 2025 Brewline Supply. All rights reserved.
       </div>
     </footer>
   );
