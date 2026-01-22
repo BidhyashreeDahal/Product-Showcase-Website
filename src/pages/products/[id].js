@@ -39,6 +39,48 @@ function getHighlights(category) {
   ];
 }
 
+function getBestFor(category) {
+  const value = (category || "").toLowerCase();
+  if (value.includes("ceramic")) {
+    return ["Morning lattes", "Shared tables", "Slow sips"];
+  }
+  if (value.includes("storage")) {
+    return ["Fresh beans", "Tidy counters", "Small kitchens"];
+  }
+  if (value.includes("accessories")) {
+    return ["Daily prep", "Compact setups", "Gifting"];
+  }
+  return ["Pour-over", "Dialed recipes", "Weekend brews"];
+}
+
+function getInBox(category) {
+  const value = (category || "").toLowerCase();
+  if (value.includes("ceramic")) {
+    return ["1× Ceramic piece", "Care card"];
+  }
+  if (value.includes("storage")) {
+    return ["1× Storage container", "Aroma seal guide"];
+  }
+  if (value.includes("accessories")) {
+    return ["1× Accessory", "Quick start card"];
+  }
+  return ["1× Brew tool", "Quick start card"];
+}
+
+function getSizeWeight(category) {
+  const value = (category || "").toLowerCase();
+  if (value.includes("ceramic")) {
+    return "Approx. 9cm × 9cm · 380g";
+  }
+  if (value.includes("storage")) {
+    return "Approx. 12cm × 12cm · 420g";
+  }
+  if (value.includes("accessories")) {
+    return "Approx. 16cm × 4cm · 120g";
+  }
+  return "Approx. 22cm × 12cm · 650g";
+}
+
 export async function getStaticPaths() {
   const products = await getProducts();
 
@@ -152,6 +194,43 @@ export default function ProductDetail({ product }) {
               </p>
               <ul className="mt-3 list-disc space-y-1 pl-5">
                 {getHighlights(product.category).map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-6 grid gap-4 text-sm text-[#6b5446] sm:grid-cols-2">
+              <div className="rounded-2xl border border-[#eadfce] bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                  Best for
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {getBestFor(product.category).map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full bg-[#f3e7da] px-3 py-1 text-xs font-semibold text-[#7a5d4a]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-2xl border border-[#eadfce] bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                  Size & weight
+                </p>
+                <p className="mt-3 text-sm text-[#6b5446]">
+                  {getSizeWeight(product.category)}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-[#eadfce] bg-white p-4 text-sm text-[#6b5446]">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                In the box
+              </p>
+              <ul className="mt-3 list-disc space-y-1 pl-5">
+                {getInBox(product.category).map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
