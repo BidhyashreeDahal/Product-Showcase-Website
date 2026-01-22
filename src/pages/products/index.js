@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import ProductList from "../../components/ProductList";
 import { getProducts } from "../../lib/contentful";
 import BeanIcon from "../../components/icons/BeanIcon";
@@ -39,6 +40,18 @@ export default function ProductsPage({ products }) {
 
   return (
     <div className="bg-[#f7f2ea] coffee-pattern">
+      <Head>
+        <title>Shop Coffee Bar | Brewline Supply</title>
+        <meta
+          name="description"
+          content="Shop coffee bar essentials: brew tools, ceramics, storage, and accessories."
+        />
+        <meta property="og:title" content="Shop Coffee Bar | Brewline Supply" />
+        <meta
+          property="og:description"
+          content="Browse curated brew tools, ceramics, storage, and accessories."
+        />
+      </Head>
       <div className="mx-auto max-w-6xl px-6 py-14">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
           Coffee Bar

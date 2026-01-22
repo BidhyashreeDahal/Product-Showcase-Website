@@ -1,9 +1,26 @@
 import Link from "next/link";
+import Head from "next/head";
 import BeanIcon from "../components/icons/BeanIcon";
 
 export default function Home() {
   return (
     <div className="bg-[#f7f2ea] coffee-pattern">
+      <Head>
+        <title>Brewline Supply | Coffee Bar Essentials</title>
+        <meta
+          name="description"
+          content="Brewline Supply offers curated coffee bar essentials: kettles, grinders, ceramics, and storage."
+        />
+        <meta property="og:title" content="Brewline Supply | Coffee Bar Essentials" />
+        <meta
+          property="og:description"
+          content="Curated tools and ceramics for a calm, intentional coffee ritual."
+        />
+        <meta
+          property="og:image"
+          content="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?auto=format&fit=crop&w=1200&q=60"
+        />
+      </Head>
       <section className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">

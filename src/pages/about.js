@@ -1,8 +1,17 @@
 import BeanIcon from "../components/icons/BeanIcon";
+import Head from "next/head";
 
 export default function About() {
   return (
     <div className="bg-[#f7f2ea] coffee-pattern">
+      <Head>
+        <title>About Brewline Supply</title>
+        <meta
+          name="description"
+          content="Brewline Supply is a small-batch coffee bar brand focused on practical, warm tools for daily rituals."
+        />
+        <meta property="og:title" content="About Brewline Supply" />
+      </Head>
       <div className="mx-auto max-w-5xl px-6 py-16">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
           About

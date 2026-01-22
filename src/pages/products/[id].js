@@ -1,6 +1,7 @@
 // src/pages/products/[id].js
 
 import { getProductById, getProducts } from "../../lib/contentful";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -77,6 +78,19 @@ export default function ProductDetail({ product }) {
   // --------------------------------------------
   return (
     <div className="bg-[#f7f2ea] coffee-pattern">
+      <Head>
+        <title>{product.title} | Brewline Supply</title>
+        <meta
+          name="description"
+          content={`Coffee bar essential: ${product.title}. ${product.description}`}
+        />
+        <meta property="og:title" content={`${product.title} | Brewline Supply`} />
+        <meta
+          property="og:description"
+          content={`Coffee bar essential: ${product.title}.`}
+        />
+        <meta property="og:image" content={product.image || getCoffeeImage(product)} />
+      </Head>
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <img
