@@ -100,6 +100,41 @@ export default function ProductDetail({ product }) {
             </div>
             <p className="mt-4 text-sm text-[#6b5446]">{product.description}</p>
 
+            <div className="mt-6 grid gap-4 text-sm text-[#6b5446] sm:grid-cols-2">
+              <div className="rounded-2xl border border-[#eadfce] bg-[#fdf8f2] p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                  Shipping
+                </p>
+                <ul className="mt-2 space-y-1">
+                  <li>Ships in 2–4 business days (Canada).</li>
+                  <li>Free shipping over $75 CAD.</li>
+                  <li>Flat $8 CAD shipping under $75.</li>
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-[#eadfce] bg-[#fdf8f2] p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                  Returns
+                </p>
+                <ul className="mt-2 space-y-1">
+                  <li>30‑day returns in original condition.</li>
+                  <li>Free exchanges for damaged items.</li>
+                  <li>Contact support for a prepaid label.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-[#eadfce] bg-white p-4 text-sm text-[#6b5446]">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                Customer Notes
+              </p>
+              <p className="mt-2">
+                “Feels sturdy and looks great on the counter. The finish is exactly what I wanted.”
+              </p>
+              <p className="mt-2">
+                “Arrived fast and the packaging was thoughtful — very premium.”
+              </p>
+            </div>
+
             {user && (
               <div className="mt-6 flex flex-wrap gap-3">
                 {(user.role === "admin" || user.email === product.author) && (
