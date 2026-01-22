@@ -11,18 +11,18 @@ export default function Footer() {
         <div>
           <p className="text-base font-semibold">Shop</p>
           <div className="mt-2 space-y-1 text-[#eadfce]">
-            <p>Shop All</p>
-            <p>Brew Tools</p>
-            <p>Ceramics</p>
-            <p>Storage</p>
+            <a href="/products" className="block hover:text-white">Shop All</a>
+            <a href="/products" className="block hover:text-white">Brew Tools</a>
+            <a href="/products" className="block hover:text-white">Ceramics</a>
+            <a href="/products" className="block hover:text-white">Storage</a>
           </div>
         </div>
         <div>
           <p className="text-base font-semibold">Support</p>
           <div className="mt-2 space-y-1 text-[#eadfce]">
-            <p>Shipping & Returns</p>
-            <p>Care Guide</p>
-            <p>Contact</p>
+            <a href="/shipping" className="block hover:text-white">Shipping & Returns</a>
+            <a href="/care-guide" className="block hover:text-white">Care Guide</a>
+            <a href="/faq" className="block hover:text-white">FAQ</a>
           </div>
         </div>
       </div>
