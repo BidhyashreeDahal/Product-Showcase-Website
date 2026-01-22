@@ -37,6 +37,7 @@ export default function ProductsPage({ products }) {
   const paginated = filtered.slice(start, end);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <div className="bg-[#f7f2ea] coffee-pattern">
@@ -165,9 +166,21 @@ export default function ProductsPage({ products }) {
             Previous
           </button>
 
-          <span>
-            Page {page} of {totalPages}
-          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            {pageNumbers.map((number) => (
+              <button
+                key={number}
+                onClick={() => setPage(number)}
+                className={`h-9 w-9 rounded-full border text-sm font-semibold ${
+                  page === number
+                    ? "border-[#a8703a] bg-[#a8703a] text-white"
+                    : "border-[#eadfce] bg-white text-[#2f241f] hover:bg-[#f1e4d6]"
+                }`}
+              >
+                {number}
+              </button>
+            ))}
+          </div>
 
           <button
             className="rounded-full bg-[#a8703a] px-4 py-2 font-semibold text-white disabled:opacity-40"

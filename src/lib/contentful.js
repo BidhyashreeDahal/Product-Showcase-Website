@@ -41,6 +41,9 @@ function formatProduct(entry) {
     description: entry.fields.description || "",
     author: entry.fields.author || "",
     category: entry.fields.category || "",
+    material: entry.fields.material || "",
+    capacity: entry.fields.capacity || "",
+    care: entry.fields.care || "",
     price: Number.isFinite(parsedPrice) ? parsedPrice : null,
     image,
   };
@@ -86,6 +89,18 @@ export async function updateProduct(id, data) {
     entry.fields.category = entry.fields.category || {};
     entry.fields.category["en-US"] = data.category;
   }
+  if (data.material !== undefined) {
+    entry.fields.material = entry.fields.material || {};
+    entry.fields.material["en-US"] = data.material;
+  }
+  if (data.capacity !== undefined) {
+    entry.fields.capacity = entry.fields.capacity || {};
+    entry.fields.capacity["en-US"] = data.capacity;
+  }
+  if (data.care !== undefined) {
+    entry.fields.care = entry.fields.care || {};
+    entry.fields.care["en-US"] = data.care;
+  }
   if (data.price !== undefined) {
     entry.fields.price = entry.fields.price || {};
     entry.fields.price["en-US"] = data.price;
@@ -125,6 +140,9 @@ export async function deleteProduct(id) {
       description: { "en-US": data.description },
       author: { "en-US": data.author },
       category: { "en-US": data.category },
+      material: { "en-US": data.material },
+      capacity: { "en-US": data.capacity },
+      care: { "en-US": data.care },
       price: { "en-US": data.price },
       image: { "en-US": data.image || null },
     },

@@ -8,6 +8,9 @@ export default function CreateProduct() {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");   // ← NEW
   const [price, setPrice] = useState("");
+  const [material, setMaterial] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [care, setCare] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [error, setError] = useState("");
 
@@ -23,6 +26,9 @@ export default function CreateProduct() {
         description,
         category,     // ← NEW REQUIRED FIELD
         price,
+        material,
+        capacity,
+        care,
         image: imageUrl
       }),
     });
@@ -93,6 +99,42 @@ export default function CreateProduct() {
                 step="0.01"
                 min="0"
                 required
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">
+                Material
+              </label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
+                value={material}
+                onChange={(e) => setMaterial(e.target.value)}
+                placeholder="Stoneware, stainless steel, walnut"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">
+                Capacity
+              </label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
+                value={capacity}
+                onChange={(e) => setCapacity(e.target.value)}
+                placeholder="600ml / 12oz"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">
+                Care
+              </label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
+                value={care}
+                onChange={(e) => setCare(e.target.value)}
+                placeholder="Hand wash recommended"
               />
             </div>
 

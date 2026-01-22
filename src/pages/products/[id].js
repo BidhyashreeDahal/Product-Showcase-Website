@@ -114,6 +114,26 @@ export default function ProductDetail({ product }) {
             </div>
             <p className="mt-4 text-sm text-[#6b5446]">{product.description}</p>
 
+            <div className="mt-6 rounded-2xl border border-[#eadfce] bg-white p-4 text-sm text-[#6b5446]">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                Specs
+              </p>
+              <dl className="mt-3 grid gap-3 sm:grid-cols-3">
+                <div>
+                  <dt className="text-xs font-semibold text-[#7a5d4a]">Material</dt>
+                  <dd>{product.material || "—"}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold text-[#7a5d4a]">Capacity</dt>
+                  <dd>{product.capacity || "—"}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold text-[#7a5d4a]">Care</dt>
+                  <dd>{product.care || "—"}</dd>
+                </div>
+              </dl>
+            </div>
+
             <div className="mt-6 grid gap-4 text-sm text-[#6b5446] sm:grid-cols-2">
               <div className="rounded-2xl border border-[#eadfce] bg-[#fdf8f2] p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
