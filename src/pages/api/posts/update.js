@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   const user = getUserFromRequest(req);
   if (!user) return res.status(401).json({ message: "Not authenticated" });
 
-  const { id, title, description, category, price, material, capacity, care } = req.body;
+  const { id, title, description, category, price } = req.body;
 
   if (!id || !title || !description || !category || price === undefined || price === null) {
     return res.status(400).json({ message: "Missing fields" });
@@ -39,9 +39,6 @@ export default async function handler(req, res) {
       description,
       author: existing.author, // keep original author
       category,
-      material,
-      capacity,
-      care,
       price: parsedPrice,
     });
 

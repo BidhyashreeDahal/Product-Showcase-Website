@@ -13,9 +13,6 @@ export default function EditProductPage() {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
-  const [material, setMaterial] = useState("");
-  const [capacity, setCapacity] = useState("");
-  const [care, setCare] = useState("");
   const [version, setVersion] = useState(null);
   const [error, setError] = useState("");
 
@@ -40,9 +37,6 @@ export default function EditProductPage() {
               ? ""
               : String(data.product.price)
           );
-          setMaterial(data.product.material || "");
-          setCapacity(data.product.capacity || "");
-          setCare(data.product.care || "");
           setVersion(data.product.version);
         }
       } catch (err) {
@@ -67,9 +61,6 @@ export default function EditProductPage() {
       description,
       category,
       price,
-      material,
-      capacity,
-      care,
     }),
   });
 
@@ -146,33 +137,6 @@ export default function EditProductPage() {
                 type="number"
                 step="0.01"
                 min="0"
-              />
-            </div>
-
-            <div>
-              <label className="text-sm font-semibold text-[#2f241f]">Material</label>
-              <input
-                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
-                value={material}
-                onChange={(e) => setMaterial(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <label className="text-sm font-semibold text-[#2f241f]">Capacity</label>
-              <input
-                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
-                value={capacity}
-                onChange={(e) => setCapacity(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <label className="text-sm font-semibold text-[#2f241f]">Care</label>
-              <input
-                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
-                value={care}
-                onChange={(e) => setCare(e.target.value)}
               />
             </div>
 

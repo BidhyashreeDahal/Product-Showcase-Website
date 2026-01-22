@@ -1,6 +1,36 @@
 import { getCoffeeImage } from "../lib/coffee-images";
 import { formatPrice } from "../lib/formatting";
 
+function getHighlights(category) {
+  const value = (category || "").toLowerCase();
+  if (value.includes("ceramic")) {
+    return [
+      "Heat-safe glaze with a soft matte finish.",
+      "Balanced weight for daily use on the counter.",
+      "Pairs well with the Brewline pour-over lineup.",
+    ];
+  }
+  if (value.includes("storage")) {
+    return [
+      "Keeps beans fresh with minimal air exposure.",
+      "Clean silhouette that fits open shelving.",
+      "Easy to wipe and refill between roasts.",
+    ];
+  }
+  if (value.includes("accessories")) {
+    return [
+      "Lightweight tools designed for daily prep.",
+      "Compact footprint for small brew stations.",
+      "Complements any Brewline ceramic set.",
+    ];
+  }
+  return [
+    "Built for consistent, repeatable brews.",
+    "Thoughtful details for calm morning routines.",
+    "Matches the Brewline neutral palette.",
+  ];
+}
+
 export default function ProductDetail({ product }) {
   if (!product) {
     return <p className="text-[#6b5446]">Product not found.</p>;
@@ -28,30 +58,16 @@ export default function ProductDetail({ product }) {
             <span className="text-[#7a5d4a]">{formatPrice(product.price)}</span>
           </div>
           <p className="mt-4 text-sm text-[#6b5446]">{product.description}</p>
+
           <div className="mt-5 rounded-2xl border border-[#eadfce] bg-white p-4 text-sm text-[#6b5446]">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
-              Specs
+              Highlights
             </p>
-            {product.material || product.capacity || product.care ? (
-              <dl className="mt-3 grid gap-3 sm:grid-cols-3">
-                <div>
-                  <dt className="text-xs font-semibold text-[#7a5d4a]">Material</dt>
-                  <dd>{product.material || "—"}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-semibold text-[#7a5d4a]">Capacity</dt>
-                  <dd>{product.capacity || "—"}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-semibold text-[#7a5d4a]">Care</dt>
-                  <dd>{product.care || "—"}</dd>
-                </div>
-              </dl>
-            ) : (
-              <p className="mt-2 text-sm text-[#6b5446]">
-                Add material, capacity, and care details in Contentful to show specs.
-              </p>
-            )}
+            <ul className="mt-3 list-disc space-y-1 pl-5">
+              {getHighlights(product.category).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
