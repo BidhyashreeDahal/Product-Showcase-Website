@@ -1,3 +1,5 @@
+import { getCoffeeImage } from "../lib/coffee-images";
+
 export default function ProductDetail({ product }) {
   if (!product) {
     return <p className="text-[#6b5446]">Product not found.</p>;
@@ -6,17 +8,11 @@ export default function ProductDetail({ product }) {
   return (
     <div className="mx-auto max-w-5xl px-6 py-12">
       <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        {product.image ? (
-          <img
-            src={product.image}
-            alt={product.title}
-            className="h-72 w-full rounded-3xl object-cover"
-          />
-        ) : (
-          <div className="flex h-72 items-center justify-center rounded-3xl bg-gradient-to-br from-[#f3e7da] to-[#fff6ec] text-4xl font-semibold text-[#b59a87]">
-            {product.title?.slice(0, 1) || "C"}
-          </div>
-        )}
+        <img
+          src={product.image || getCoffeeImage(product)}
+          alt={product.title}
+          className="h-72 w-full rounded-3xl object-cover"
+        />
         <div className="rounded-3xl border border-[#eadfce] bg-white p-6">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
             Product

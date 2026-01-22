@@ -47,6 +47,34 @@ export default function ProductsPage({ products }) {
           </span>
         </div>
 
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {[
+            {
+              title: "Shop the counter",
+              text: "Ceramics, mugs, and serving pieces in warm tones.",
+            },
+            {
+              title: "Shop the brew",
+              text: "Kettles, drippers, and scales for precise pours.",
+            },
+            {
+              title: "Shop the beans",
+              text: "Storage tins, scoops, and freshness tools.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-[#eadfce] bg-white p-5"
+            >
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#2f241f]">
+                <BeanIcon className="h-4 w-4 text-[#a8703a]" />
+                {item.title}
+              </div>
+              <p className="mt-2 text-sm text-[#6b5446]">{item.text}</p>
+            </div>
+          ))}
+        </div>
+
         <div className="mt-8">
           <ProductList products={paginated} />
         </div>

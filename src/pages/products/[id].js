@@ -4,6 +4,7 @@ import { getProductById, getProducts } from "../../lib/contentful";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { getCoffeeImage } from "../../lib/coffee-images";
 
 export async function getStaticPaths() {
   const products = await getProducts();
@@ -77,17 +78,11 @@ export default function ProductDetail({ product }) {
     <div className="bg-[#f7f2ea] coffee-pattern">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          {product.image ? (
-            <img
-              src={product.image}
-              alt={product.title}
-              className="h-96 w-full rounded-3xl object-cover"
-            />
-          ) : (
-            <div className="flex h-96 items-center justify-center rounded-3xl bg-gradient-to-br from-[#f3e7da] to-[#fff6ec] text-5xl font-semibold text-[#b59a87]">
-              {product.title?.slice(0, 1) || "C"}
-            </div>
-          )}
+          <img
+            src={product.image || getCoffeeImage(product)}
+            alt={product.title}
+            className="h-96 w-full rounded-3xl object-cover"
+          />
 
           <div className="rounded-3xl border border-[#eadfce] bg-white p-6">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">

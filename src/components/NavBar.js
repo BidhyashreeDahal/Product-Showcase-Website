@@ -46,7 +46,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4 text-sm text-[#f6eee5]">
           <Link href="/" className="hover:text-white">Home</Link>
-          <Link href="/products" className="hover:text-white">Products</Link>
+          <Link href="/products" className="hover:text-white">Shop</Link>
           <Link href="/about" className="hover:text-white">About</Link>
           {user && (user.role === "admin" || user.role === "author") && (
             <Link href="/dashboard" className="hover:text-white">Dashboard</Link>
