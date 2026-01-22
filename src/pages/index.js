@@ -65,7 +65,7 @@ export default function Home() {
         <div className="rounded-3xl border border-[#eadfce] bg-white p-4 shadow-[0_24px_60px_rgba(94,63,45,0.12)]">
           <img
             className="h-64 w-full rounded-2xl object-cover"
-            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=60"
+            src="https://beansignal.com/wp-content/uploads/2025/05/DSC06611-scaled.jpg"
             alt="Gooseneck kettle"
           />
           <div className="mt-4 rounded-2xl bg-[#fdf8f2] p-4">
