@@ -33,7 +33,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="bg-[#f7f2ea]">
+    <div className="bg-[#f7f2ea] coffee-pattern">
       <div className="mx-auto max-w-md px-6 py-16">
         <div className="rounded-3xl border border-[#eadfce] bg-white p-6 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">

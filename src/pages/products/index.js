@@ -1,6 +1,7 @@
 import React from "react";
 import ProductList from "../../components/ProductList";
 import { getProducts } from "../../lib/contentful";
+import BeanIcon from "../../components/icons/BeanIcon";
 
 export async function getStaticProps() {
   const products = await getProducts();
@@ -18,7 +19,7 @@ export default function ProductsPage({ products }) {
   const totalPages = Math.ceil(products.length / pageSize);
 
   return (
-    <div className="bg-[#f7f2ea]">
+    <div className="bg-[#f7f2ea] coffee-pattern">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
           Coffee Bar
@@ -32,9 +33,18 @@ export default function ProductsPage({ products }) {
         </p>
 
         <div className="mt-6 flex items-center gap-3 text-sm text-[#7a5d4a]">
-          <span className="rounded-full bg-[#f3e7da] px-3 py-1">Beans</span>
-          <span className="rounded-full bg-[#f3e7da] px-3 py-1">Pour-over</span>
-          <span className="rounded-full bg-[#f3e7da] px-3 py-1">Ceramics</span>
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#f3e7da] px-3 py-1">
+            <BeanIcon className="h-3.5 w-3.5" />
+            Beans
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#f3e7da] px-3 py-1">
+            <BeanIcon className="h-3.5 w-3.5" />
+            Pour-over
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#f3e7da] px-3 py-1">
+            <BeanIcon className="h-3.5 w-3.5" />
+            Ceramics
+          </span>
         </div>
 
         <div className="mt-8">

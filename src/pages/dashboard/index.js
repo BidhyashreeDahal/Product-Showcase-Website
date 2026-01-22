@@ -44,7 +44,7 @@ export default function Dashboard() {
 
 
   return (
-    <div className="bg-[#f7f2ea]">
+    <div className="bg-[#f7f2ea] coffee-pattern">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
           Dashboard

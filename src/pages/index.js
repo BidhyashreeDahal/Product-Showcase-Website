@@ -1,8 +1,9 @@
 import Link from "next/link";
+import BeanIcon from "../components/icons/BeanIcon";
 
 export default function Home() {
   return (
-    <div className="bg-[#f7f2ea]">
+    <div className="bg-[#f7f2ea] coffee-pattern">
       <section className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
@@ -30,16 +31,25 @@ export default function Home() {
             </Link>
           </div>
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-[#7a5d4a]">
-            <span className="rounded-full bg-[#f3e7da] px-3 py-1">Small batch</span>
-            <span className="rounded-full bg-[#f3e7da] px-3 py-1">Matte ceramic</span>
-            <span className="rounded-full bg-[#f3e7da] px-3 py-1">Slow brew</span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#f3e7da] px-3 py-1">
+              <BeanIcon className="h-3.5 w-3.5" />
+              Small batch
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#f3e7da] px-3 py-1">
+              <BeanIcon className="h-3.5 w-3.5" />
+              Matte ceramic
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#f3e7da] px-3 py-1">
+              <BeanIcon className="h-3.5 w-3.5" />
+              Slow brew
+            </span>
           </div>
         </div>
         <div className="rounded-3xl border border-[#eadfce] bg-white p-4 shadow-[0_24px_60px_rgba(94,63,45,0.12)]">
           <img
             className="h-64 w-full rounded-2xl object-cover"
-            src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=60"
-            alt="Coffee beans and brewing tools"
+            src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?auto=format&fit=crop&w=1200&q=60"
+            alt="Coffee bar setup"
           />
           <div className="mt-4 rounded-2xl bg-[#fdf8f2] p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9b7a63]">
@@ -56,21 +66,30 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-16">
-        <div className="grid gap-6 rounded-3xl border border-[#eadfce] bg-white px-6 py-8 md:grid-cols-3">
+          <div className="grid gap-6 rounded-3xl border border-[#eadfce] bg-white px-6 py-8 md:grid-cols-3">
           <div>
-            <p className="text-sm font-semibold text-[#2f241f]">Beans & storage</p>
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#2f241f]">
+              <BeanIcon className="h-4 w-4 text-[#a8703a]" />
+              Beans & storage
+            </div>
             <p className="mt-2 text-sm text-[#6b5446]">
               Airtight canisters and simple labels keep your beans aromatic.
             </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-[#2f241f]">Precision tools</p>
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#2f241f]">
+              <BeanIcon className="h-4 w-4 text-[#a8703a]" />
+              Precision tools
+            </div>
             <p className="mt-2 text-sm text-[#6b5446]">
               Scales, grinders, and kettles tuned for repeatable pours.
             </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-[#2f241f]">Warm ceramics</p>
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#2f241f]">
+              <BeanIcon className="h-4 w-4 text-[#a8703a]" />
+              Warm ceramics
+            </div>
             <p className="mt-2 text-sm text-[#6b5446]">
               Cream and clay tones that feel grounded on any counter.
             </p>

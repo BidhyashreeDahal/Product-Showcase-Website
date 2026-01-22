@@ -17,3 +17,11 @@
     text-decoration: none;
   }
 }
+
+@layer utilities {
+  .coffee-pattern {
+    background-image: url("/coffee-beans.svg");
+    background-repeat: repeat;
+    background-size: 360px 360px;
+  }
+}

@@ -1,6 +1,8 @@
+import BeanIcon from "../components/icons/BeanIcon";
+
 export default function About() {
   return (
-    <div className="bg-[#f7f2ea]">
+    <div className="bg-[#f7f2ea] coffee-pattern">
       <div className="mx-auto max-w-5xl px-6 py-16">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
           About
@@ -33,7 +35,10 @@ export default function About() {
               key={item.title}
               className="rounded-2xl border border-[#eadfce] bg-white p-5"
             >
-              <p className="text-sm font-semibold text-[#2f241f]">{item.title}</p>
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#2f241f]">
+                <BeanIcon className="h-4 w-4 text-[#a8703a]" />
+                {item.title}
+              </div>
               <p className="mt-2 text-sm text-[#6b5446]">{item.text}</p>
             </div>
           ))}

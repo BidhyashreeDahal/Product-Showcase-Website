@@ -72,7 +72,7 @@ export default function EditProductPage() {
   if (error) return <p className="px-6 py-10 text-red-600">{error}</p>;
 
   return (
-    <div className="bg-[#f7f2ea]">
+    <div className="bg-[#f7f2ea] coffee-pattern">
       <div className="mx-auto max-w-2xl px-6 py-14">
         <div className="rounded-3xl border border-[#eadfce] bg-white p-6">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">

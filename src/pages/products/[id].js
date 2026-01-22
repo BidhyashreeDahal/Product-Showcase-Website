@@ -74,7 +74,7 @@ export default function ProductDetail({ product }) {
   // UI RENDER
   // --------------------------------------------
   return (
-    <div className="bg-[#f7f2ea]">
+    <div className="bg-[#f7f2ea] coffee-pattern">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           {product.image ? (
