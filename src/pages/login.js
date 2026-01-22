@@ -33,37 +33,49 @@ export default function LoginPage() {
   }
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Login</h1>
-      <p>Use one of: admin@blog.com / author@blog.com / viewer@blog.com</p>
+    <div className="bg-[#f7f2ea]">
+      <div className="mx-auto max-w-md px-6 py-16">
+        <div className="rounded-3xl border border-[#eadfce] bg-white p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
+            Account
+          </p>
+          <h1 className="mt-3 text-3xl font-semibold text-[#2f241f]">Login</h1>
+          <p className="mt-2 text-sm text-[#6b5446]">
+            Use one of: admin@blog.com / author@blog.com / viewer@blog.com
+          </p>
 
-      <form onSubmit={handleSubmit} style={{ maxWidth: 320 }}>
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Email</label>
-          <input
-            style={{ display: "block", width: "100%", padding: "0.5rem" }}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-          />
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">Email</label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm text-[#2f241f] focus:outline-none focus:ring-2 focus:ring-[#d1a374]"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">Password</label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm text-[#2f241f] focus:outline-none focus:ring-2 focus:ring-[#d1a374]"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+              />
+            </div>
+
+            {error && <p className="text-sm text-red-600">{error}</p>}
+
+            <button
+              type="submit"
+              className="w-full rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]"
+            >
+              Login
+            </button>
+          </form>
         </div>
-
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Password</label>
-          <input
-            style={{ display: "block", width: "100%", padding: "0.5rem" }}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-          />
-        </div>
-
-        {error && (
-          <p style={{ color: "red", marginBottom: "1rem" }}>{error}</p>
-        )}
-
-        <button type="submit">Login</button>
-      </form>
+      </div>
     </div>
   );
 }

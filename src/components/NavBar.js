@@ -37,46 +37,43 @@ export default function Navbar() {
   }
 
   return (
-    <nav
-      style={{
-        padding: "16px",
-        background: "#131212ff",
-        borderBottom: "1px solid #0a0a0aff",
-        display: "flex",
-        gap: "20px",
-      }}
-    >
-      <Link href="/">Home</Link>
-      <Link href="/products">Products</Link>
-      <Link href="/about">About</Link>
-
-      {/* Dashboard (admin + author only) */}
-      {user && (user.role === "admin" || user.role === "author") && (
-        <Link href="/dashboard">Dashboard</Link>
-      )}
-
-      {/* Right side */}
-      {user ? (
-        <>
-          <span style={{ marginLeft: "auto", opacity: 0.8 }}>
-            {user.email} ({user.role})
-          </span>
-          <button
-            onClick={handleLogout}
-            style={{
-              marginLeft: "10px",
-              padding: "4px 10px",
-              cursor: "pointer",
-            }}
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <Link href="/login" style={{ marginLeft: "auto" }}>
-          Login
+    <nav className="sticky top-0 z-20 border-b border-[#eadfce] bg-[#3b2a22]/95 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
+        <Link href="/" className="flex items-center gap-2 text-white">
+          <span className="text-lg">☕</span>
+          <span className="text-base font-semibold tracking-wide">Brewline Supply</span>
         </Link>
-      )}
+
+        <div className="flex items-center gap-4 text-sm text-[#f6eee5]">
+          <Link href="/" className="hover:text-white">Home</Link>
+          <Link href="/products" className="hover:text-white">Products</Link>
+          <Link href="/about" className="hover:text-white">About</Link>
+          {user && (user.role === "admin" || user.role === "author") && (
+            <Link href="/dashboard" className="hover:text-white">Dashboard</Link>
+          )}
+        </div>
+
+        <div className="ml-auto flex items-center gap-3 text-xs text-[#eadfce]">
+          {user ? (
+            <>
+              <span className="hidden sm:block">{user.email} ({user.role})</span>
+              <button
+                onClick={handleLogout}
+                className="rounded-full bg-[#d1a374] px-3 py-1 text-sm font-semibold text-[#3b2a22] hover:bg-[#c39263]"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              href="/login"
+              className="rounded-full bg-[#d1a374] px-3 py-1 text-sm font-semibold text-[#3b2a22] hover:bg-[#c39263]"
+            >
+              Login
+            </Link>
+          )}
+        </div>
+      </div>
     </nav>
   );
 }

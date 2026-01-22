@@ -68,47 +68,58 @@ export default function EditProductPage() {
 
 }
 
-  if (loading) return <p style={{ padding: 20 }}>Loading...</p>;
-  if (error) return <p style={{ padding: 20, color: "red" }}>{error}</p>;
+  if (loading) return <p className="px-6 py-10 text-[#6b5446]">Loading...</p>;
+  if (error) return <p className="px-6 py-10 text-red-600">{error}</p>;
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Edit Product</h1>
+    <div className="bg-[#f7f2ea]">
+      <div className="mx-auto max-w-2xl px-6 py-14">
+        <div className="rounded-3xl border border-[#eadfce] bg-white p-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
+            Dashboard
+          </p>
+          <h1 className="mt-3 text-3xl font-semibold text-[#2f241f]">
+            Edit Product
+          </h1>
 
-      <p>
-        <strong>ID:</strong> {id}
-      </p>
-      <p>
-        <strong>Author:</strong> {product.author}
-      </p>
+          <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold text-[#7a5d4a]">
+            <span className="rounded-full bg-[#f3e7da] px-3 py-1">ID: {id}</span>
+            <span className="rounded-full bg-[#f3e7da] px-3 py-1">
+              Author: {product.author}
+            </span>
+          </div>
 
-      <div style={{ marginTop: 20 }}>
-        <label>Title</label>
-        <input
-          style={{ display: "block", width: 300, padding: 8 }}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+          <div className="mt-6 space-y-4">
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">Title</label>
+              <input
+                className="mt-2 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold text-[#2f241f]">Description</label>
+              <textarea
+                className="mt-2 h-32 w-full rounded-xl border border-[#eadfce] bg-[#fdf8f2] px-3 py-2 text-sm"
+                rows={5}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+
+            <button
+              className="rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]"
+              onClick={handleSave}
+            >
+              Save
+            </button>
+
+            {error && <p className="text-sm text-red-600">{error}</p>}
+          </div>
+        </div>
       </div>
-
-      <div style={{ marginTop: 20 }}>
-        <label>Description</label>
-        <textarea
-          style={{ display: "block", width: 300, padding: 8 }}
-          rows={5}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-
-      <button
-        style={{ marginTop: 20, padding: "10px 20px" }}
-        onClick={handleSave}
-      >
-        Save
-      </button>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }

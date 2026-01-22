@@ -74,53 +74,63 @@ export default function ProductDetail({ product }) {
   // UI RENDER
   // --------------------------------------------
   return (
-    <div style={{ padding: 20 }}>
-      <h1>{product.title}</h1>
-
-      <p><strong>Author:</strong> {product.author}</p>
-      <p style={{ maxWidth: 500 }}>{product.description}</p>
-
-      {product.image && (
-        <img
-          src={product.image}
-          alt={product.title}
-          style={{ width: 300, borderRadius: 10, marginTop: 20 }}
-        />
-      )}
-
-      <hr style={{ margin: "30px 0" }} />
-
-      {user && (
-        <div>
-
-          {/* ✅ EDIT allowed only for Admin OR product owner */}
-          {(user.role === "admin" || user.email === product.author) && (
-            <Link href={`/dashboard/edit/${product.id}`}>
-              <button style={{ marginRight: 10 }}>Edit</button>
-            </Link>
+    <div className="bg-[#f7f2ea]">
+      <div className="mx-auto max-w-6xl px-6 py-14">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          {product.image ? (
+            <img
+              src={product.image}
+              alt={product.title}
+              className="h-96 w-full rounded-3xl object-cover"
+            />
+          ) : (
+            <div className="flex h-96 items-center justify-center rounded-3xl bg-gradient-to-br from-[#f3e7da] to-[#fff6ec] text-5xl font-semibold text-[#b59a87]">
+              {product.title?.slice(0, 1) || "C"}
+            </div>
           )}
 
-          {/* ✅ DELETE allowed only for Admin */}
-          {user.role === "admin" && (
-            <button
-              onClick={handleDelete}
-              style={{
-                background: "red",
-                color: "white",
-                padding: "8px 15px",
-                border: "none",
-                borderRadius: 5,
-              }}
+          <div className="rounded-3xl border border-[#eadfce] bg-white p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
+              Product
+            </p>
+            <h1 className="mt-3 text-3xl font-semibold text-[#2f241f]">
+              {product.title}
+            </h1>
+            <p className="mt-2 text-sm font-semibold text-[#6b5446]">
+              Author: {product.author}
+            </p>
+            <p className="mt-4 text-sm text-[#6b5446]">{product.description}</p>
+
+            {user && (
+              <div className="mt-6 flex flex-wrap gap-3">
+                {(user.role === "admin" || user.email === product.author) && (
+                  <Link href={`/dashboard/edit/${product.id}`}>
+                    <button className="rounded-full border border-[#eadfce] bg-white px-4 py-2 text-sm font-semibold text-[#2f241f] hover:bg-[#f1e4d6]">
+                      Edit
+                    </button>
+                  </Link>
+                )}
+
+                {user.role === "admin" && (
+                  <button
+                    onClick={handleDelete}
+                    className="rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+                  >
+                    Delete
+                  </button>
+                )}
+              </div>
+            )}
+
+            <Link
+              href="/products"
+              className="mt-6 inline-flex text-sm font-semibold text-[#a8703a]"
             >
-              Delete
-            </button>
-          )}
-
+              ← Back to Products
+            </Link>
+          </div>
         </div>
-      )}
-
-      <br />
-      <Link href="/products">← Back to Products</Link>
+      </div>
     </div>
   );
 }
