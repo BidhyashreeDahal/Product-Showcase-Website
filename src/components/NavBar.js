@@ -2,10 +2,12 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useCart } from "./CartContext";
 
 export default function Navbar() {
   const [user, setUser] = useState(null);
   const router = useRouter();
+  const { itemCount } = useCart();
 
   // Load user function
   async function loadUser() {
@@ -54,6 +56,15 @@ export default function Navbar() {
         </div>
 
         <div className="ml-auto flex items-center gap-3 text-xs text-[#eadfce]">
+          <Link
+            href="/cart"
+            className="flex items-center gap-2 rounded-full border border-[#5a4235] px-3 py-1 text-sm font-semibold text-[#f6eee5] hover:border-[#d1a374]"
+          >
+            Cart
+            <span className="rounded-full bg-[#d1a374] px-2 py-0.5 text-xs font-semibold text-[#3b2a22]">
+              {itemCount}
+            </span>
+          </Link>
           {user ? (
             <>
               <span className="hidden sm:block">{user.email} ({user.role})</span>

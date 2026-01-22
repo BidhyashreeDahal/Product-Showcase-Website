@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getCoffeeImage } from "../../lib/coffee-images";
 import { formatPrice } from "../../lib/formatting";
+import { useCart } from "../../components/CartContext";
 
 export async function getStaticPaths() {
   const products = await getProducts();
@@ -37,6 +38,7 @@ export async function getStaticProps({ params }) {
 export default function ProductDetail({ product }) {
   const router = useRouter();
   const [user, setUser] = useState(null);
+  const { addItem } = useCart();
 
   // Fetch logged in user
   useEffect(() => {
@@ -118,20 +120,26 @@ export default function ProductDetail({ product }) {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
                 Specs
               </p>
-              <dl className="mt-3 grid gap-3 sm:grid-cols-3">
-                <div>
-                  <dt className="text-xs font-semibold text-[#7a5d4a]">Material</dt>
-                  <dd>{product.material || "—"}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-semibold text-[#7a5d4a]">Capacity</dt>
-                  <dd>{product.capacity || "—"}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-semibold text-[#7a5d4a]">Care</dt>
-                  <dd>{product.care || "—"}</dd>
-                </div>
-              </dl>
+              {product.material || product.capacity || product.care ? (
+                <dl className="mt-3 grid gap-3 sm:grid-cols-3">
+                  <div>
+                    <dt className="text-xs font-semibold text-[#7a5d4a]">Material</dt>
+                    <dd>{product.material || "—"}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-semibold text-[#7a5d4a]">Capacity</dt>
+                    <dd>{product.capacity || "—"}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-semibold text-[#7a5d4a]">Care</dt>
+                    <dd>{product.care || "—"}</dd>
+                  </div>
+                </dl>
+              ) : (
+                <p className="mt-2 text-sm text-[#6b5446]">
+                  Add material, capacity, and care details in Contentful to show specs.
+                </p>
+              )}
             </div>
 
             <div className="mt-6 grid gap-4 text-sm text-[#6b5446] sm:grid-cols-2">
@@ -169,26 +177,29 @@ export default function ProductDetail({ product }) {
               </p>
             </div>
 
-            {user && (
-              <div className="mt-6 flex flex-wrap gap-3">
-                {(user.role === "admin" || user.email === product.author) && (
-                  <Link href={`/dashboard/edit/${product.id}`}>
-                    <button className="rounded-full border border-[#eadfce] bg-white px-4 py-2 text-sm font-semibold text-[#2f241f] hover:bg-[#f1e4d6]">
-                      Edit
-                    </button>
-                  </Link>
-                )}
-
-                {user.role === "admin" && (
-                  <button
-                    onClick={handleDelete}
-                    className="rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
-                  >
-                    Delete
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button
+                onClick={() => addItem(product)}
+                className="rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]"
+              >
+                Add to Cart
+              </button>
+              {user && (user.role === "admin" || user.email === product.author) && (
+                <Link href={`/dashboard/edit/${product.id}`}>
+                  <button className="rounded-full border border-[#eadfce] bg-white px-4 py-2 text-sm font-semibold text-[#2f241f] hover:bg-[#f1e4d6]">
+                    Edit
                   </button>
-                )}
-              </div>
-            )}
+                </Link>
+              )}
+              {user?.role === "admin" && (
+                <button
+                  onClick={handleDelete}
+                  className="rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              )}
+            </div>
 
             <Link
               href="/products"

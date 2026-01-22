@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { getCoffeeImage } from "../lib/coffee-images";
 import { formatPrice } from "../lib/formatting";
+import { useCart } from "./CartContext";
 
 export default function ProductList({ products }) {
+  const { addItem } = useCart();
+
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => (
@@ -28,13 +31,19 @@ export default function ProductList({ products }) {
               </span>
             )}
           </div>
-          <div className="px-5 pb-5">
+          <div className="px-5 pb-5 space-y-2">
             <Link
               href={`/products/${product.id}`}
               className="inline-flex w-full items-center justify-center rounded-full border border-[#eadfce] bg-[#fdf8f2] px-4 py-2 text-sm font-semibold text-[#2f241f] hover:bg-[#f1e4d6]"
             >
               View Details
             </Link>
+            <button
+              onClick={() => addItem(product)}
+              className="inline-flex w-full items-center justify-center rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       ))}
