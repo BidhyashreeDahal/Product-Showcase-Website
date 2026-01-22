@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="mt-16 border-t border-[#eadfce] bg-[#3b2a22]">
@@ -11,18 +13,33 @@ export default function Footer() {
         <div>
           <p className="text-base font-semibold">Shop</p>
           <div className="mt-2 space-y-1 text-[#eadfce]">
-            <a href="/products" className="block hover:text-white">Shop All</a>
-            <a href="/products" className="block hover:text-white">Brew Tools</a>
-            <a href="/products" className="block hover:text-white">Ceramics</a>
-            <a href="/products" className="block hover:text-white">Storage</a>
+            <Link href="/products" className="block hover:text-white">Shop All</Link>
+            <Link
+              href={{ pathname: "/products", query: { category: "Brew Tools" } }}
+              className="block hover:text-white"
+            >
+              Brew Tools
+            </Link>
+            <Link
+              href={{ pathname: "/products", query: { category: "Ceramics" } }}
+              className="block hover:text-white"
+            >
+              Ceramics
+            </Link>
+            <Link
+              href={{ pathname: "/products", query: { category: "Storage" } }}
+              className="block hover:text-white"
+            >
+              Storage
+            </Link>
           </div>
         </div>
         <div>
           <p className="text-base font-semibold">Support</p>
           <div className="mt-2 space-y-1 text-[#eadfce]">
-            <a href="/shipping" className="block hover:text-white">Shipping & Returns</a>
-            <a href="/care-guide" className="block hover:text-white">Care Guide</a>
-            <a href="/faq" className="block hover:text-white">FAQ</a>
+            <Link href="/shipping" className="block hover:text-white">Shipping & Returns</Link>
+            <Link href="/care-guide" className="block hover:text-white">Care Guide</Link>
+            <Link href="/faq" className="block hover:text-white">FAQ</Link>
           </div>
         </div>
       </div>

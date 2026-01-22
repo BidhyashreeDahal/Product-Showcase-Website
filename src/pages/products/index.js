@@ -3,6 +3,7 @@ import Head from "next/head";
 import ProductList from "../../components/ProductList";
 import { getProducts } from "../../lib/contentful";
 import BeanIcon from "../../components/icons/BeanIcon";
+import { useRouter } from "next/router";
 
 export async function getStaticProps() {
   const products = await getProducts();
@@ -14,6 +15,7 @@ export default function ProductsPage({ products }) {
   const [page, setPage] = React.useState(1);
   const [categoryFilter, setCategoryFilter] = React.useState("all");
   const [query, setQuery] = React.useState("");
+  const router = useRouter();
 
   const categories = React.useMemo(() => {
     const values = products
@@ -38,6 +40,20 @@ export default function ProductsPage({ products }) {
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  React.useEffect(() => {
+    if (!router.isReady) return;
+    const { category, q } = router.query;
+    if (typeof category === "string" && category.trim().length > 0) {
+      setCategoryFilter(category);
+    } else {
+      setCategoryFilter("all");
+    }
+    if (typeof q === "string") {
+      setQuery(q);
+    }
+    setPage(1);
+  }, [router.isReady, router.query]);
 
   return (
     <div className="bg-[#f7f2ea] coffee-pattern">
