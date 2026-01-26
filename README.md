@@ -101,13 +101,8 @@ Recommended categories:
 - `/contact` Contact
 
 ## Screenshots
-
-Add screenshots here when ready (optional):
-
-```
-![Home](./docs/home.png)
-![Shop](./docs/shop.png)
-```
+![Home](image-1.png)
+![Product](image.png)
 
 ## Deployment
 
