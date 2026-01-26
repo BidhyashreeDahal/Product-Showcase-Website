@@ -58,9 +58,12 @@ export default function CheckoutPage() {
             <p className="mt-3 text-sm text-[#6b5446]">
               Taxes and shipping calculated at checkout.
             </p>
-            <button className="mt-6 w-full rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]">
+            <Link
+              href="/checkout-success"
+              className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]"
+            >
               Place order
-            </button>
+            </Link>
             <Link
               href="/cart"
               className="mt-3 inline-flex text-sm font-semibold text-[#a8703a]"
