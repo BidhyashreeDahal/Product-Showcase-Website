@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { verifyToken } from "./src/lib/auth";
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
@@ -16,13 +15,7 @@ export function middleware(request) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // Invalid / expired token → go to login
-  const user = verifyToken(token);
-  if (!user) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
-  // Everything OK → proceed
+  // Token exists → proceed (validation handled in API routes)
   return NextResponse.next();
 }
 

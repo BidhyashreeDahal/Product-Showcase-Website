@@ -31,14 +31,16 @@ export function verifyToken(token) {
 
 
 export function setAuthCookie(res, token) {
+  const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
   res.setHeader("Set-Cookie",
-    `token=${token}; HttpOnly; Path=/; SameSite=Lax`
+    `token=${token}; HttpOnly; Path=/; SameSite=Lax${secure}`
   );
 }
 
 export function clearAuthCookie(res) {
+  const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
   res.setHeader("Set-Cookie",
-    `token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax`
+    `token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax${secure}`
   );
 }
 export function getUserFromRequest(req) {
