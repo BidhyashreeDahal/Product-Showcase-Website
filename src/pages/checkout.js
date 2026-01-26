@@ -21,6 +21,9 @@ export default function CheckoutPage() {
         <p className="mt-3 text-lg text-[#6b5446]">
           This is a mock checkout flow for the portfolio build.
         </p>
+        <p className="mt-2 text-sm text-[#7a5d4a]">
+          Payments are currently disabled. This page is for demonstration only.
+        </p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[2fr_1fr]">
           <div className="rounded-2xl border border-[#eadfce] bg-white p-6">
