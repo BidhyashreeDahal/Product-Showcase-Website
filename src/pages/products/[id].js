@@ -165,113 +165,30 @@ export default function ProductDetail({ product }) {
         />
         <meta property="og:image" content={product.image || getCoffeeImage(product)} />
       </Head>
-      <div className="mx-auto max-w-6xl px-6 py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="mx-auto max-w-6xl px-6 py-12">
+        <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
           <img
             src={product.image || getCoffeeImage(product)}
             alt={product.title}
-            className="h-96 w-full rounded-3xl object-cover"
+            className="h-72 w-full rounded-3xl object-cover"
           />
 
-          <div className="rounded-3xl border border-[#eadfce] bg-white p-6">
+          <div className="rounded-3xl border border-[#eadfce] bg-white p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#9b7a63]">
               Product
             </p>
-            <h1 className="mt-3 text-3xl font-semibold text-[#2f241f]">
+            <h1 className="mt-2 text-2xl font-semibold text-[#2f241f]">
               {product.title}
             </h1>
-            <div className="mt-3 flex flex-wrap items-center gap-2 text-sm font-semibold text-[#6b5446]">
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-sm font-semibold text-[#6b5446]">
               <span className="rounded-full bg-[#f3e7da] px-3 py-1 text-[#7a5d4a]">
                 {product.category || "Coffee gear"}
               </span>
               <span className="text-[#7a5d4a]">{formatPrice(product.price)}</span>
             </div>
-            <p className="mt-4 text-sm text-[#6b5446]">{product.description}</p>
+            <p className="mt-3 text-sm text-[#6b5446]">{product.description}</p>
 
-            <div className="mt-6 rounded-2xl border border-[#eadfce] bg-white p-4 text-sm text-[#6b5446]">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
-                Highlights
-              </p>
-              <ul className="mt-3 list-disc space-y-1 pl-5">
-                {getHighlights(product.category).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-6 grid gap-4 text-sm text-[#6b5446] sm:grid-cols-2">
-              <div className="rounded-2xl border border-[#eadfce] bg-white p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
-                  Best for
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {getBestFor(product.category).map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-[#f3e7da] px-3 py-1 text-xs font-semibold text-[#7a5d4a]"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="rounded-2xl border border-[#eadfce] bg-white p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
-                  Size & weight
-                </p>
-                <p className="mt-3 text-sm text-[#6b5446]">
-                  {getSizeWeight(product.category)}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-6 rounded-2xl border border-[#eadfce] bg-white p-4 text-sm text-[#6b5446]">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
-                In the box
-              </p>
-              <ul className="mt-3 list-disc space-y-1 pl-5">
-                {getInBox(product.category).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-6 grid gap-4 text-sm text-[#6b5446] sm:grid-cols-2">
-              <div className="rounded-2xl border border-[#eadfce] bg-[#fdf8f2] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
-                  Shipping
-                </p>
-                <ul className="mt-2 space-y-1">
-                  <li>Ships in 2–4 business days (Canada).</li>
-                  <li>Free shipping over $75 CAD.</li>
-                  <li>Flat $8 CAD shipping under $75.</li>
-                </ul>
-              </div>
-              <div className="rounded-2xl border border-[#eadfce] bg-[#fdf8f2] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
-                  Returns
-                </p>
-                <ul className="mt-2 space-y-1">
-                  <li>30‑day returns in original condition.</li>
-                  <li>Free exchanges for damaged items.</li>
-                  <li>Contact support for a prepaid label.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-6 rounded-2xl border border-[#eadfce] bg-white p-4 text-sm text-[#6b5446]">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
-                Customer Notes
-              </p>
-              <p className="mt-2">
-                “Feels sturdy and looks great on the counter. The finish is exactly what I wanted.”
-              </p>
-              <p className="mt-2">
-                “Arrived fast and the packaging was thoughtful — very premium.”
-              </p>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-4 flex flex-wrap gap-3">
               <button
                 onClick={() => addItem(product)}
                 className="rounded-full bg-[#a8703a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#94612f]"
@@ -293,6 +210,40 @@ export default function ProductDetail({ product }) {
                   Delete
                 </button>
               )}
+            </div>
+
+            <div className="mt-4 grid gap-3 text-sm text-[#6b5446] lg:grid-cols-2">
+              <div className="rounded-2xl border border-[#eadfce] bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                  Highlights
+                </p>
+                <ul className="mt-2 list-disc space-y-1 pl-5">
+                  {getHighlights(product.category).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-[#eadfce] bg-[#fdf8f2] p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                  Customer notes
+                </p>
+                <p className="mt-2 text-sm text-[#4b372d]">
+                  “Feels sturdy and looks great on the counter.”
+                </p>
+                <p className="mt-2 text-xs text-[#6b5446]">
+                  “Arrived fast and the packaging was thoughtful.”
+                </p>
+              </div>
+              <div className="rounded-2xl border border-[#eadfce] bg-white p-4 lg:col-span-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9b7a63]">
+                  In the box
+                </p>
+                <ul className="mt-2 list-disc space-y-1 pl-5">
+                  {getInBox(product.category).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <Link

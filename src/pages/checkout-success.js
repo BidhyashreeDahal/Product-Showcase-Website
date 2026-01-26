@@ -20,8 +20,7 @@ export default function CheckoutSuccess() {
             Thanks for your order.
           </h1>
           <p className="mt-3 text-sm text-[#6b5446]">
-            This is a mock checkout flow for the portfolio project. A confirmation
-            email would be sent in a real store.
+           Thank you so much for shopping with us!
           </p>
           <Link
             href="/products"
